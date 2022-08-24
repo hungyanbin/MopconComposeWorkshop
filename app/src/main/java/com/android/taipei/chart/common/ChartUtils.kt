@@ -1,4 +1,4 @@
-package com.android.taipei.chart
+package com.android.taipei.chart.common
 
 import androidx.compose.ui.graphics.Path
 

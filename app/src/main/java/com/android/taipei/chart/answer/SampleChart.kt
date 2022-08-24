@@ -1,4 +1,4 @@
-package com.android.taipei.chart
+package com.android.taipei.chart.answer
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
@@ -9,11 +9,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.graphics.drawscope.DrawStyle
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.unit.dp
-import com.android.taipei.chart.ChartUtils.bezierPointsTo
+import com.android.taipei.chart.common.ChartUtils.bezierPointsTo
+import com.android.taipei.chart.common.CBPointF
+import com.android.taipei.chart.common.ChartUtils
+import com.android.taipei.chart.common.LineData
 
 @Composable
 fun SampleChart(modifier: Modifier, lineDatas: List<LineData>) {
