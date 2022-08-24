@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -27,29 +28,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    val lineData1 = LineData(
-                        color = Color.Red,
-                        name = "Sample",
-                        points = (1..11).toList().map {
-                            val yLabel = Random.nextFloat() * 100
-                            DataPoint(it.toString(), yLabel = yLabel)
-                        }
-                    )
-                    val lineData2 = LineData(
-                        color = Color.Blue,
-                        name = "Sample2",
-                        points = (1..11).toList().map {
-                            val yLabel = Random.nextFloat() * 50
-                            DataPoint(it.toString(), yLabel = yLabel)
-                        }
-                    )
-
-                    SampleChart(
-                        modifier = Modifier
-                            .height(300.dp)
-                            .fillMaxWidth(),
-                        lineDatas = listOf(lineData1, lineData2)
-                    )
+                    Text(text = "Hello")
                 }
             }
         }

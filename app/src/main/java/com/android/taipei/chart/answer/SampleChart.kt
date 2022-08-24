@@ -10,11 +10,14 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.translate
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.android.taipei.chart.common.ChartUtils.bezierPointsTo
 import com.android.taipei.chart.common.CBPointF
 import com.android.taipei.chart.common.ChartUtils
+import com.android.taipei.chart.common.DataPoint
 import com.android.taipei.chart.common.LineData
+import kotlin.random.Random
 
 @Composable
 fun SampleChart(modifier: Modifier, lineDatas: List<LineData>) {
@@ -31,7 +34,7 @@ fun SampleChart(modifier: Modifier, lineDatas: List<LineData>) {
 
                 translate(left = paddingPx, top = paddingPx) {
                     val xInterval = chartWidth / 10
-                    drawDataWithBezier(lineDatas, xInterval, chartHeight, strokeWidth)
+                    drawDataWithPath(lineDatas, xInterval, chartHeight, strokeWidth)
 //                    drawDataWithPoints(lineDatas, xInterval, chartHeight, strokeWidth)
                     drawLine(
                         color = Color.Black,
@@ -135,7 +138,7 @@ private fun DrawScope.drawDataWithPath(
 
         drawPath(
             path = path,
-            brush = Brush.horizontalGradient(listOf(lineData.color, lineData.color.copy(green = 1f))),
+            color = lineData.color,
         )
     }
 }
@@ -163,4 +166,32 @@ private fun DrawScope.drawDataWithBezier(
             brush = Brush.horizontalGradient(listOf(lineData.color, lineData.color.copy(green = 1f))),
         )
     }
+}
+
+@Preview
+@Composable
+fun SampleChartPreview(){
+    val lineData1 = LineData(
+        color = Color.Red,
+        name = "Sample",
+        points = (1..11).toList().map {
+            val yLabel = Random.nextFloat() * 100
+            DataPoint(it.toString(), yLabel = yLabel)
+        }
+    )
+    val lineData2 = LineData(
+        color = Color.Blue,
+        name = "Sample2",
+        points = (1..11).toList().map {
+            val yLabel = Random.nextFloat() * 50
+            DataPoint(it.toString(), yLabel = yLabel)
+        }
+    )
+
+    SampleChart(
+        modifier = Modifier
+            .height(300.dp)
+            .fillMaxWidth(),
+        lineDatas = listOf(lineData1, lineData2)
+    )
 }
