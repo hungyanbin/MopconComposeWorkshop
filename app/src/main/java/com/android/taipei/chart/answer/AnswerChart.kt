@@ -34,8 +34,7 @@ fun SampleChart(modifier: Modifier, lineDatas: List<LineData>) {
 
                 translate(left = paddingPx, top = paddingPx) {
                     val xInterval = chartWidth / 10
-                    drawDataWithPath(lineDatas, xInterval, chartHeight, strokeWidth)
-//                    drawDataWithPoints(lineDatas, xInterval, chartHeight, strokeWidth)
+                    drawDataWithBezier(lineDatas, xInterval, chartHeight, strokeWidth)
                     drawLine(
                         color = Color.Black,
                         start = Offset(0f, 0f),
