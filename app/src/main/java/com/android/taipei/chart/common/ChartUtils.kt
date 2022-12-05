@@ -1,10 +1,11 @@
 package com.android.taipei.chart.common
 
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Path
 
 object ChartUtils {
 
-    fun Path.bezierPointsTo(points: List<CBPointF>, direction: Direction) {
+    fun Path.bezierPointsTo(points: List<Offset>, direction: Direction) {
         if (points.size < 2) return
 
         when (direction) {

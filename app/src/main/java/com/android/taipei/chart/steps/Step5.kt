@@ -13,7 +13,6 @@ import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.android.taipei.chart.common.ChartUtils.bezierPointsTo
-import com.android.taipei.chart.common.CBPointF
 import com.android.taipei.chart.common.ChartUtils
 import com.android.taipei.chart.common.DataPoint
 import com.android.taipei.chart.common.LineData
@@ -81,7 +80,7 @@ private fun DrawScope.drawDataWithBezier(
         val points = lineData.points.mapIndexed { index, dataPoint ->
             val x = index * xInterval
             val y = chartHeight - (chartHeight / 100 * dataPoint.yLabel)
-            CBPointF(x, y)
+            Offset(x, y)
         }
 
         path.bezierPointsTo(points, ChartUtils.Direction.Horizontal)
