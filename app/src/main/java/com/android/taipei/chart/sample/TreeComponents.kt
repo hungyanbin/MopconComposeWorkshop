@@ -50,6 +50,33 @@ fun Tree(modifier: Modifier) {
     })
 }
 
+private fun DrawScope.drawRibbon(width: Int, height: Int, strokeWidth: Int, color: Color) {
+    val ribbonWidth = strokeWidth.dp.toPx()
+    val rectWidth = width.dp.toPx()
+    val rectHeight = height.dp.toPx()
+    val ribbonPath = Path()
+    ribbonPath.moveTo(-rectWidth/2, rectHeight)
+    ribbonPath.quadraticBezierTo(
+        x1 = 0f,
+        y1 = 0f,
+        x2 = rectWidth/2,
+        y2 = rectHeight
+    )
+    ribbonPath.lineTo(rectWidth/2, rectHeight + ribbonWidth)
+    ribbonPath.quadraticBezierTo(
+        x1 = 0f,
+        y1 = ribbonWidth,
+        x2 = -rectWidth/2,
+        y2 = rectHeight + ribbonWidth
+    )
+    ribbonPath.lineTo(-rectWidth/2, rectHeight)
+
+    drawPath(
+        path = ribbonPath,
+        color = color
+    )
+}
+
 private fun DrawScope.drawTriangle(width: Int) {
     val trianglePath = Path()
     trianglePath.lineTo(width.dp.toPx(), width.dp.toPx())
